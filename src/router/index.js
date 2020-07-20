@@ -5,6 +5,7 @@ import homePage from "../views/homePage";
 import moodEssay from "../views/moodEssay";
 import messageBoard from "../views/messageBoard";
 import pigeonholeManagement from "../views/pigeonholeManagement";
+import signIn from "../views/signIn";
 
 Vue.use(Router)
 
@@ -20,5 +21,6 @@ export default new Router({
     {path: '/moodEssay', name: 'moodEssay', component:moodEssay,meta:{title: '无心|心做し',keepAlive:true}},
     {path: '/messageBoard', name: 'messageBoard', component:messageBoard,meta:{title: '无心|心做し',keepAlive:true}},
     {path: '/pigeonholeManagement', name: 'pigeonholeManagement', component: pigeonholeManagement,meta:{title: '无心|心做し',keepAlive:true}},
+    {path: '/signIn', name: 'signIn', component: signIn,meta:{title: '无心|心做し',keepAlive:true}},
   ],
 })

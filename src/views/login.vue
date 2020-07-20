@@ -12,7 +12,11 @@
           <input v-model="password" class="login_input" placeholder="密码" type="password" maxlength="16">
         </div>
           <el-button class="login_button" @click="goLogin()" round>登录</el-button>
+          <div> 
+            <span class="tip" @click="goSign()">没有账号？请注册</span>
+          </div>
       </div>
+       
     </div>
   </div>
 </template>
@@ -133,14 +137,18 @@
           })
         }else{
           adminLogin({"username": this.username,"password": this.password}).then(res=> {
-            if(res.data.adminInfo){
-              sessionStorage.setItem('administrator','true');
+            console.log(res)
+            if(res.code === 200){
+              if(res.data){
+              sessionStorage.setItem('administrator',res.token);
               this.$router.push({name:'moodEssay'})
               this.$notify({
                 message: '登陆成功', // 修改成功
                 type: 'success'
               })
-            }else{
+              }
+            }
+            else{
               this.$message({
                 message: '账号不存在或者密码错误',
                 type: 'error'
@@ -148,6 +156,9 @@
             }
           })
         }
+      },
+      goSign(){
+         this.$router.push({name:'signIn'})
       }
     },
     mounted() {
@@ -238,6 +249,15 @@
   }
   .login_input::-webkit-input-placeholder{
     color: #c4c4c4;
+  }
+  .tip{
+    position: absolute;
+    width: 100%;
+    color: white;
+    font-size: 10px;
+    align-items: center;
+    text-align: center;
+    top: 210px;
   }
 
 </style>

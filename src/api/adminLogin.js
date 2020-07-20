@@ -7,3 +7,11 @@ export function adminLogin(data) {
     data
   })
 }
+
+export function sign(data) {
+  return request({
+    url: '/person/signIn',
+    method: 'POST',
+    data
+  })
+}
